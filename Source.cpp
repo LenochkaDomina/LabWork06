@@ -5,7 +5,7 @@ using namespace std;
 
 int main()
 {
-	//вибір завдання
+	//ГўГЁГЎВіГ° Г§Г ГўГ¤Г Г­Г­Гї
 	cout << "PracticeWork_06 413 Domina Olena" << endl;
 	int i = 1;
 	cout << "Enter i = 1 for Task 1\n"
@@ -17,9 +17,51 @@ int main()
 
 	switch (i)
 	{
+	case 1:
+	{
+		//Р·Р°РІРґР°РЅРЅСЏ 1 РїСЂРѕ СЂРѕР·СЂР°С…СѓРЅРѕРє Сѓ Р·Р°Р»РµР¶РЅРѕ РІС–Рґ Р·РЅР°С‡РµРЅРЅСЏ С…
+		float x, a;
+		cout << "Enter x and a for calculate Y" << endl;
+		cout << "x = ";
+		cin >> x;
+		cout << "a = ";
+		cin >> a;
+	
+		float b = pow(x, 2) / pow(a, 2);
+	
+		//РћР”Р— Рё СѓС‚РѕС‡РЅРµРЅРёРµ РѕР± РѕС€РёР±РєРµ
+		if (a == 0 || b >= 1 || (cos(x) == 0))
+		{
+			if (a == 0)
+			{
+				cout << "Error: a = 0" << endl;
+			}
+			if (b >= 1)
+			{
+				cout << "Error: negative number at root" << endl;
+			}
+			if (cos(x) == 0)
+			{
+				cout << "Error: cos(x) = 0" << endl;
+			}
+		}
+		//РµСЃР»Рё СЃ РћР”Р— РІСЃС‘ РЅРѕСЂРјР°Р»СЊРЅРѕ
+		if (abs(a) > 0 && b <= 1 && !(cos(x) == 0))
+		{
+			if (x < 0)
+			{
+				cout << "Y = " << 2 * a * pow(1 - b, 0.5f) << endl;
+			}
+			if (x >= 0)
+			{
+				cout << "Y = " << a / (2 * cos(x)) + 3 * a / 2 << endl;
+			}
+		}
+	}
+	break;
 	case 2:
 	{
-		//завдання 2 про значення у від округлення а
+		//Г§Г ГўГ¤Г Г­Г­Гї 2 ГЇГ°Г® Г§Г­Г Г·ГҐГ­Г­Гї Гі ГўВіГ¤ Г®ГЄГ°ГіГЈГ«ГҐГ­Г­Гї Г 
 		int x;
 		float a;
 		cout << "Enter x and a for calculate y" << endl;
@@ -47,7 +89,7 @@ int main()
 	break;
 	case 3:
 	{
-		//завдання 3 відповідність точки графічній області
+		//Г§Г ГўГ¤Г Г­Г­Гї 3 ГўВіГ¤ГЇГ®ГўВіГ¤Г­ВіГ±ГІГј ГІГ®Г·ГЄГЁ ГЈГ°Г ГґВіГ·Г­ВіГ© Г®ГЎГ«Г Г±ГІВі
 		float x, y;
 		cout << "Enter (x ; y)" << endl;
 		cout << "x = ";
@@ -60,7 +102,7 @@ int main()
 	break;
 	case 4:
 	{
-		//завдання 4 розрахунок прикладу з врахуванням ОДЗ
+		//Г§Г ГўГ¤Г Г­Г­Гї 4 Г°Г®Г§Г°Г ГµГіГ­Г®ГЄ ГЇГ°ГЁГЄГ«Г Г¤Гі Г§ ГўГ°Г ГµГіГўГ Г­Г­ГїГ¬ ГЋГ„Г‡
 		float a, x, b;
 		cout << "Enter a, x, b for calculate Y" << endl;
 		cout << "a=";
@@ -70,10 +112,13 @@ int main()
 		cout << "b=";
 		cin >> b;
 
-		if (!(pow(pow(a * x - 1.72f, 2), 1.0f / 3.0f) + 4.75f * pow(10, 1.2) * (a - x) - pow(cos(b - x), 2) == 0) && abs(b + x) <= 1)
+		float c;
+		c = pow(pow(a * x - 1.72f, 2), 1.0f / 3.0f) + 4.75f * pow(10, 1.2) * (a - x) - pow(cos(b - x), 2);
+		
+		if (!c == 0 && abs(b + x) <= 1)
 		{
 			cout << "\nY="
-				<< (1.9f * pow(10, 3) * x - exp(a * x) + asin(b + x) - log10(pow(x, 2)) + a) / (pow(pow(a * x - 1.72f, 2), 1.0f / 3.0f) + 4.75f * pow(10, 1.2) * (a - x) - pow(cos(b - x), 2))
+				<< (1.9f * pow(10, 3) * x - exp(a * x) + asin(b + x) - log10(pow(x, 2)) + a) / c
 				<< endl;
 		}
 		else
@@ -82,26 +127,7 @@ int main()
 	break;
 	default:
 	{
-		//завдання 1 про розрахунок у залежно від значення х
-		float x, a;
-		cout << "Enter x and a for calculate Y" << endl;
-		cout << "x = ";
-		cin >> x;
-		cout << "a = ";
-		cin >> a;
-
-		if (x < 0 && abs(a) > 0 && pow(x, 2) / pow(a, 2) <= 1 && !(cos(x) == 0))
-		{
-			cout << "Y = " << 2 * a * pow(1 - pow(x, 2) / pow(a, 2), 0.5f) << endl;
-		}
-		if (x >= 0 && abs(a) > 0 && pow(x, 2) / pow(a, 2) <= 1 && !(cos(x) == 0))
-		{
-			cout << "Y = " << a / (2 * cos(x)) + 3 * a / 2 << endl;
-		}
-		if (a == 0 || pow(x, 2) / pow(a, 2) > 1 || cos(x) == 0)
-		{
-			cout << "Y doesn't exist" << endl;
-		}
+		cout << "Enter i from 1 to 4" << endl;
 	}
 	}
 
